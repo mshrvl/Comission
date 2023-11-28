@@ -1,7 +1,7 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    val sum = 10000
+    val comission = sum / 100 * 0.75
+    val amount = if(comission > 35) {sum + comission} else {sum + 35}
+println(amount)
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
 }
