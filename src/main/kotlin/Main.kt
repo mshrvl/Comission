@@ -2,7 +2,7 @@ import kotlin.math.max
 const val ERROR_CARD = -1
 const val ERROR_LIMIT = -2
 fun main() {
-    val sum = comission("VK Pay", 100, 300)
+    val sum = comission("VK Pay", 100, 75110)
     println(sum)
 
 }
