@@ -9,9 +9,10 @@ fun main() {
 }
 
 fun commission(cardType: String, amount: Int = 0, previous: Int): Int {
+    val totalAmount = amount + previous
+
     return when (cardType) {
         "Visa", "Mir" -> {
-            val totalAmount = amount + previous
             if (amount <= 150000 && totalAmount <= 600000) {
                 max(35, (amount * 0.0075).toInt())
             } else {
@@ -19,7 +20,6 @@ fun commission(cardType: String, amount: Int = 0, previous: Int): Int {
             }
         }
         "MasterCard", "Maestro" -> {
-            val totalAmount = amount + previous
             if (totalAmount <= 75000) {
                 amount
             } else {
@@ -29,7 +29,6 @@ fun commission(cardType: String, amount: Int = 0, previous: Int): Int {
         "VK Pay" -> {
             val dailyLimit = 15000
             val monthlyLimit = 40000
-            val totalAmount = amount + previous
             if (totalAmount <= dailyLimit && totalAmount <= monthlyLimit) {
                 amount
             } else {
