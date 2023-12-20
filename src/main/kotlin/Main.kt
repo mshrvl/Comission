@@ -4,36 +4,31 @@ const val ERROR_CARD = -1
 const val ERROR_LIMIT = -2
 
 fun main() {
-    val sum = commission("VK Pay", 100, 7)
+    val sum = commission("Visa", 100,7)
     println(sum)
 }
 
-fun commission(cardType: String, amount: Int = 0, previous: Int): Int {
+fun commission(cardType: String = "VK Pay", previous: Int = 0, amount: Int): Int {
     val totalAmount = amount + previous
 
     return when (cardType) {
         "Visa", "Mir" -> {
-            if (amount <= 150000 && totalAmount <= 600000) {
+            if (amount > 0) {
                 max(35, (amount * 0.0075).toInt())
             } else {
-                ERROR_LIMIT
+                ERROR_CARD
             }
         }
         "MasterCard", "Maestro" -> {
-            if (totalAmount <= 75000) {
-                amount
+            val monthlyLimit = 75000
+            if (totalAmount <= monthlyLimit) {
+                0 // Нет комиссии до превышения лимита
             } else {
-                (amount + (amount * 0.006) + 20).toInt()
+                max(20, (amount * 0.006).toInt() + 20)
             }
         }
         "VK Pay" -> {
-            val dailyLimit = 15000
-            val monthlyLimit = 40000
-            if (totalAmount <= dailyLimit && totalAmount <= monthlyLimit) {
-                amount
-            } else {
-                ERROR_LIMIT
-            }
+            0 // Всегда бесплатно для VK Pay
         }
         else -> ERROR_CARD
     }
