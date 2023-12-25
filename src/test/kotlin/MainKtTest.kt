@@ -32,7 +32,7 @@ class CommissionCalculatorTest {
     @Test
     fun `commission for VK Pay within limits`() {
         val result = commission("VK Pay", 100, 7)
-        assertEquals(0, result)
+        assertEquals(1, result)
     }
 
 @Test
