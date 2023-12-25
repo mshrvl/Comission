@@ -22,9 +22,9 @@ fun commission(cardType: String = "VK Pay", previous: Int = 0, amount: Int): Int
         "MasterCard", "Maestro" -> {
             val monthlyLimit = 75000
             if (totalAmount <= 600000 && amount <= 150000) {
-                return 0 // Нет комиссии до превышения лимита
+                return if(totalAmount <= monthlyLimit) 0 else ((amount * 0.006).toInt() + 20)
             } else {
-                return max(20, (amount * 0.006).toInt() + 20)
+                return ERROR_LIMIT
             }
         }
         "VK Pay" -> {
