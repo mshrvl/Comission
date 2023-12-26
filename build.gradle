@@ -14,7 +14,7 @@ repositories {
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    testImplementation 'org.testng:testng:7.1.0'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 application {

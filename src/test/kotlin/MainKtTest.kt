@@ -134,4 +134,10 @@ class CommissionCalculatorTest {
         assertEquals(0, result)
     }
 
+    @Test
+    fun masterCardTestlimit() {
+        val result = commission("MasterCard",3000000,5000)
+        assertEquals(ERROR_LIMIT,result)
+    }
+
 }
