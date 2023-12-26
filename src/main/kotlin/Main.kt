@@ -1,10 +1,11 @@
+import org.jetbrains.annotations.TestOnly
 import kotlin.math.max
 
 const val ERROR_CARD = -1
 const val ERROR_LIMIT = -2
 
 fun main() {
-    val sum = commission("Visa", 100, 7)
+    val sum = commission("Visa", 100, 150)
     println(sum)
 }
 
@@ -31,11 +32,13 @@ fun commission(cardType: String = "VK Pay", previous: Int = 0, amount: Int): Int
             val singleTransferLimit = 15000
             val monthlyLimit = 40000
             if (amount > 0 && totalAmount <= monthlyLimit && amount <= singleTransferLimit) {
-                return 0 // Всегда бесплатно для VK Pay
+                return 0
             } else {
                 return ERROR_LIMIT
             }
         }
         else -> return ERROR_CARD
     }
+
+
 }
